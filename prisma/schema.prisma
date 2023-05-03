@@ -61,3 +61,13 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model post{
+    id String @id @default(cuid())
+    content String @db.VarChar(255)
+    authorID String @db.VarChar(255)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index ([authorID], name: "authorID")
+}
